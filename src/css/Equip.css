@@ -1,0 +1,91 @@
+.equip-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 45%;
+  left: 0px;
+  z-index: 1;
+}
+
+.rpg-equip {
+  background: linear-gradient(90deg, #3d3d41, #000000f3);
+  border-radius: 5px;
+  width: 300px;
+  color: white;
+  overflow: hidden;
+  height: 400px;
+}
+
+.equip-toggle-button {
+  height: 200px;
+  padding: 15px;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.expanded .equip-toggle-button {
+  height: 400px;
+  border-radius: 0px;
+  background-color: #000000f3;
+}
+
+.rpg-equip-title {
+  height: 20px;
+  font-size: 1em;
+  margin-bottom: 4px;
+  border-bottom: 1px solid white;
+  padding-bottom: 2px;
+}
+
+.rpg-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rpg-inventory-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 0 2px 0;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.167);
+  border-radius: 10px;
+}
+
+.rpg-item-details {
+  margin-left: 10px;
+}
+
+.rpg-item-description {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.rpg-item-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 40px;
+}
+
+
+.rpg-item-icons {
+  display: flex;
+  align-items: center;
+}
+.rpg-delete-button {
+  font-size: 20px;
+  transition: transform 0.3s;
+  margin-right: 10px;
+}
+
+.rpg-delete-button:hover {
+  transform: scale(1.2);
+}

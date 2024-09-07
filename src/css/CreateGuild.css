@@ -1,0 +1,32 @@
+.guild-container {
+    max-width: 400px;
+    padding: 20px;
+}
+
+.guild-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.guild-name {
+    margin: 30px 0 20px 0;
+    font-size: 18px;
+}
+
+.guild-name-input {
+    padding: 8px;
+    margin: 0 0px 25px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.create-btn {
+    background-color: rgb(114, 89, 168);
+    border: none;
+    border-radius: 4px;
+}
+
+.create-btn:hover {
+    background-color: rgb(155, 120, 231);
+}

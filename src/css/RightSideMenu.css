@@ -1,0 +1,19 @@
+.right-side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 450px;
+    background: linear-gradient(90deg, #000000f3, #3d3d41);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.close-icon {
+  color: white;
+  font-size: 30px;
+  margin-right: auto;
+}
+  

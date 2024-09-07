@@ -1,0 +1,84 @@
+.inventory h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+
+.inventory {
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 400px;
+    height: fit-content;
+    margin: 15px;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #555;
+    padding: 8px;
+    gap: 0.5em;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    justify-content: space-between;
+}
+
+.item-description {
+    max-width: 120px;
+    text-align: left;
+}
+
+.item-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+}
+
+.item-name {
+    font-size: 14px;
+}
+
+.delete-button {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.delete-button:hover {
+    transform: scale(1.2);
+}
+
+.item-quantity {
+    font-size: 12px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chest-icon {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.equip-btn {
+    background-color: rgb(114, 89, 168);
+    border: none;
+}
+
+.equip-btn:hover {
+    background-color: rgb(155, 120, 231);
+}
