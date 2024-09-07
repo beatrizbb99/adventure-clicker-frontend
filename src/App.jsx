@@ -101,7 +101,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<GameScreen />} />
-        <Route path="/login" element={<Login PORT={PORT}/>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>

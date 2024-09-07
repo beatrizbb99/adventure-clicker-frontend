@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import '../css/Login.css';
 
-const Login = ({ PORT }) => {
+const Login = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
