@@ -39,7 +39,7 @@ const Chat = (props) => {
       ]);
     });
 
-    return () => {};
+    return () => { };
   }, [guildId]);
 
   useEffect(() => {
@@ -59,7 +59,9 @@ const Chat = (props) => {
               }
             }
           `,
-        });
+        },
+          { withCredentials: true }
+        );
 
         setMessages(response.data.data.getAllChatsAfterTime);
       } catch (error) {

@@ -11,7 +11,9 @@ const PrivateRoute = ({ element: Element, PORT }) => {
       try {
         const response = await axios.post(`https://adventure-clicker-backend.onrender.com/graphql`, {
           query: ``
-        });
+        },
+          { withCredentials: true }
+        );
         console.log(response.data);
         setIsAuthenticated(response.data.data.isAuthenticated);
       } catch (error) {

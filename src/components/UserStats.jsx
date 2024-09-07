@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 
 const UserStats = (props) => {
   const [stats, setStats] = useState([]);
-  const userId = props.userId;  
+  const userId = props.userId;
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const UserStats = (props) => {
                 } 
               }
             `,
-        });
+        },
+          { withCredentials: true }
+        );
 
         const data = response.data.data;
 
@@ -69,7 +71,7 @@ const UserStats = (props) => {
         </div>
       )}
       <button onClick={toggleExpand} className="toggle-button">
-        {isExpanded ? <IoIosClose className='stats-icon'/> : <><IoIosStats className='stats-icon'/>Stats</>}
+        {isExpanded ? <IoIosClose className='stats-icon' /> : <><IoIosStats className='stats-icon' />Stats</>}
       </button>
     </div>
   );

@@ -59,7 +59,9 @@ const GameScreen = () => {
                     }
                 }
               `,
-        });
+        },
+          { withCredentials: true }
+        );
 
         // If the response status is 200, it means the user is authenticated
         //console.log("getUserId response:", response.data.data.getUserByAuth.id);

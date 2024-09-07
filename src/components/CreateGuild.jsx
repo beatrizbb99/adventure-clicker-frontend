@@ -28,7 +28,9 @@ const CreateGuild = ({ creatorId }) => {
           }
       }
           `,
-      });
+      },
+        { withCredentials: true }
+      );
       setGuildName('');
       setLoading(false);
       setError(null);

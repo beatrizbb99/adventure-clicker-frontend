@@ -45,7 +45,9 @@ const ItemList = (props) => {
           }
         }
       `,
-      });
+      },
+        { withCredentials: true }
+      );
 
       const invItems = response.data.data.getInventarById.items;
       //console.log(invItems);
@@ -77,7 +79,9 @@ const ItemList = (props) => {
           boost: itemResult.boost,
           itemStats: `${itemResult.boostedStat}:${itemResult.boost}`,
         };
-      });
+      },
+        { withCredentials: true }
+      );
 
       // Wait for all item details to resolve
       const itemList = await Promise.all(itemDetailsPromises);
@@ -99,7 +103,9 @@ const ItemList = (props) => {
               }
             }
           `,
-      });
+      },
+        { withCredentials: true }
+      );
 
       // Wait for the mutation to complete before fetching the updated items
       await getItems();
@@ -153,7 +159,7 @@ const ItemList = (props) => {
     <div className="inventory">
       <div className="title">
         <h2>Inventory</h2>
-        <GiLockedChest className="chest-icon"/>
+        <GiLockedChest className="chest-icon" />
       </div>
       <ul className="item-list">
         {items.map(
@@ -194,7 +200,7 @@ const ItemList = (props) => {
                     });
                   }}
                 /> */}
-             <TbTrashX className="delete-button" onClick={() => handleDeleteItem(itemId)} />
+              <TbTrashX className="delete-button" onClick={() => handleDeleteItem(itemId)} />
             </li>
           )
         )}

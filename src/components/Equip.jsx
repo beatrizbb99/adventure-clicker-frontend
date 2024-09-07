@@ -37,7 +37,9 @@ const EquipList = (props) => {
                 }
           }
         `,
-      });
+      },
+        { withCredentials: true }
+      );
 
       const result = response.data;
       //console.log(result);
@@ -242,10 +244,10 @@ const EquipList = (props) => {
             ))}
           </ul>
         </div>
-        )}
-        <button onClick={toggleExpand} className="equip-toggle-button">
-          {isExpanded ? <IoIosClose className='stats-icon'/> : <><GiSwapBag className='stats-icon'/>Equiped</>}
-        </button>
+      )}
+      <button onClick={toggleExpand} className="equip-toggle-button">
+        {isExpanded ? <IoIosClose className='stats-icon' /> : <><GiSwapBag className='stats-icon' />Equiped</>}
+      </button>
     </div>
   );
 };

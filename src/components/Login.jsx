@@ -10,7 +10,8 @@ const Login = () => {
     try {
       const response = await axios.post(
         `https://adventure-clicker-backend.onrender.com/login`,
-        { username: loginUsername, password: loginPassword }
+        { username: loginUsername, password: loginPassword },
+        { withCredentials: true }
       );
 
       console.log("Login response:", response.data);
@@ -24,7 +25,8 @@ const Login = () => {
     try {
       const response = await axios.post(
         `https://adventure-clicker-backend.onrender.com/register`,
-        { username: loginUsername, password: loginPassword }
+        { username: loginUsername, password: loginPassword },
+        { withCredentials: true }
       );
 
       console.log("Registration response:", response.data);

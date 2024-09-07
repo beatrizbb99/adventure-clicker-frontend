@@ -22,7 +22,9 @@ const Chatbox = ({ userId, name }) => {
             }
           }
         `,
-      });
+      },
+        { withCredentials: true }
+      );
 
       const result = await response.data;
       setUserGuild(result.data.getUserById.gildenId);
@@ -46,7 +48,9 @@ const Chatbox = ({ userId, name }) => {
               }
             }
           `,
-        });
+        },
+          { withCredentials: true }
+        );
 
         const result = await response.data;
         setGuildName(result.data.getGildeById.name);

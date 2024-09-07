@@ -25,7 +25,9 @@ const JoinGuild = ({ userId }) => {
                                 }
                             }
                         `,
-        });
+        },
+          { withCredentials: true }
+        );
 
         const result = await response.data;
 
@@ -61,7 +63,9 @@ const JoinGuild = ({ userId }) => {
                             }
                         }
                     `,
-      });
+      },
+        { withCredentials: true }
+      );
 
       const result = await response.data;
 
