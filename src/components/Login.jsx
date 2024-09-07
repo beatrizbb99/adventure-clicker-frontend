@@ -6,7 +6,20 @@ const Login = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
+  const handleLoginLocal = async () => {
+    try {
+      const response = await axios.post(
+        `https://adventure-clicker-backend.onrender.com/login`,
+        { username: loginUsername, password: loginPassword },
+        { withCredentials: true }
+      );
 
+      console.log("Login response:", response.data);
+      window.location.href = "https://adventure-clicker.netlify.app/";
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
   const handleRegisterLocal = async () => {
     try {
@@ -21,12 +34,6 @@ const Login = () => {
       console.error("Registration failed:", error);
     }
   };
-
-  /*
-  const handleLoginGoogle = () => {
-    window.location.href = `https://adventure-clicker-backend.onrender.com/google`;
-  };
-  */
 
   return (
     <div className="login-bg">
