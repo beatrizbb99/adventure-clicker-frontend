@@ -1,9 +1,3 @@
 [build]
   publish = "dist"  # Oder der Ordner, in dem deine Build-Dateien liegen
   command = "npm run build"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
