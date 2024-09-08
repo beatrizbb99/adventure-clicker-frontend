@@ -31,7 +31,7 @@ const Adventure = (props) => {
   };
 
   const getToken = () => {
-    return localStorage.getItem('token'); // Token aus dem localStorage holen
+    return localStorage.getItem('jwtToken'); // Token aus dem localStorage holen
   };
 
   const doEvent = async () => {

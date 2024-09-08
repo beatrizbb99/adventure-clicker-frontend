@@ -6,7 +6,7 @@ const RegionDisplay = (props) => {
   const [error, setError] = useState(null);
 
   const getToken = () => {
-    return localStorage.getItem('token'); // Token aus dem localStorage holen
+    return localStorage.getItem('jwtToken'); // Token aus dem localStorage holen
   };
 
   useEffect(() => {
