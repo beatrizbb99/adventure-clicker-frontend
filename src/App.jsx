@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";  // Import für Toastify
 import "react-toastify/dist/ReactToastify.css";          // Toastify CSS
 
