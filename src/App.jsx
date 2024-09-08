@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "./App.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -17,6 +18,8 @@ const GameScreen = () => {
   const [name, setName] = useState("");
 
   const checkGame = async () => {
+    const navigate = useNavigate();
+    
     try {
       const response = await axios.get(`https://adventure-clicker-backend.onrender.com`);
 
@@ -25,7 +28,7 @@ const GameScreen = () => {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         console.log("Redirecting to login page");
-        window.location.href = "https://adventure-clicker.netlify.app/login";
+        navigate("/login");
       } else {
         console.error("Login failed:", error);
       }
