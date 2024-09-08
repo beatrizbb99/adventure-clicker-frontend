@@ -31,7 +31,7 @@ const GameScreen = () => {
 
       // If the response is successful, the user is authenticated
       console.log("Authentication response:", response);
-      setAuthUserId(response.data.user._id);
+      setAuthUserId(response.data.user.id);
       toast.success(`Angemeldet.`);
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -70,8 +70,7 @@ const GameScreen = () => {
             },
           }
         );
-
-        console.log(response.data);
+        console.log("User Id: ", response.data);
         setUserId(response.data.data.getUserByAuth.id);
         setName(response.data.data.getUserByAuth.name);
       } catch (error) {
