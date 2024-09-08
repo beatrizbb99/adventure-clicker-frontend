@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";  // Import für Toastify
-import "react-toastify/dist/ReactToastify.css";          // Toastify CSS
-
 import "./App.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -28,7 +25,6 @@ const GameScreen = () => {
       // If the response status is 200, it means the user is authenticated
       //console.log("Authentication response:", response);
       setAuthUserId(response.data.user._id);
-      toast.success("Angemeldet als ", response.data.user.username);
     } catch (error) {
       // Check if it's a redirect
       if (
@@ -36,12 +32,13 @@ const GameScreen = () => {
         error.response.status === 302 &&
         error.response.headers.location
       ) {
-        
-        window.location.href = "https://adventure-clicker.netlify.app/login";
-        toast.warn("Bitte melde dich an.");
+        const redirectUrl = error.response.headers.location;
+        console.log("Redirecting to:", redirectUrl);
+        // Redirect to the login page
+        window.location.href = redirectUrl;
       } else {
         console.error("Login failed:", error);
-        toast.error("Login fehlgeschlagen.");
+        window.location.href = "https://adventure-clicker.netlify.app/login";
       }
     }
   };
@@ -77,12 +74,13 @@ const GameScreen = () => {
           error.response.status === 302 &&
           error.response.headers.location
         ) {
-          
-          window.location.href = "https://adventure-clicker.netlify.app/login";
-          toast.warn("Bitte melde dich an.");
+          const redirectUrl = error.response.headers.location;
+          console.log("Redirecting to:", redirectUrl);
+          // Redirect to the login page
+          window.location.href = redirectUrl;
         } else {
           console.error("Login failed:", error);
-          toast.error("Fehler beim Abrufen der Benutzerdaten.");
+          window.location.href = "https://adventure-clicker.netlify.app/login";
         }
       }
     };
@@ -96,7 +94,6 @@ const GameScreen = () => {
   return (
     <div>
       {userId ? <Game userId={userId} name={name} /> : <CircularLoadingBar />}
-      <ToastContainer />
     </div>
   );
 };
