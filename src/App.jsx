@@ -39,11 +39,9 @@ const GameScreen = () => {
         console.log("Redirecting to:", redirectUrl);
         // Redirect to the login page
         toast.warn("Redirect 1");
-        window.location.href = redirectUrl;
       } else {
         console.error("Login failed:", error);
         toast.error("Login fehlgeschlagen 1");
-        window.location.href = "https://adventure-clicker.netlify.app/login";
       }
     }
   };
@@ -83,11 +81,9 @@ const GameScreen = () => {
           console.log("Redirecting to:", redirectUrl);
           // Redirect to the login page
           toast.warn("Redirect 2");
-          window.location.href = redirectUrl;
         } else {
           console.error("Login failed:", error);
           toast.error("Login fehlgeschlagen 2");
-          window.location.href = "https://adventure-clicker.netlify.app/login";
         }
       }
     };
