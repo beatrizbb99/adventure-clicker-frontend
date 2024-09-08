@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import "./App.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -25,6 +26,7 @@ const GameScreen = () => {
       // If the response status is 200, it means the user is authenticated
       //console.log("Authentication response:", response);
       setAuthUserId(response.data.user._id);
+      toast.success("Angemeldet als ", response.data.user.username);
     } catch (error) {
       // Check if it's a redirect
       if (
@@ -36,9 +38,11 @@ const GameScreen = () => {
         console.log("Redirecting to:", redirectUrl);
         // Redirect to the login page
         window.location.href = redirectUrl;
+        toast.warn("Redirect");
       } else {
         console.error("Login failed:", error);
         window.location.href = "https://adventure-clicker.netlify.app/login";
+        toast.error("Login fehlgeschlagen");
       }
     }
   };
@@ -78,9 +82,11 @@ const GameScreen = () => {
           console.log("Redirecting to:", redirectUrl);
           // Redirect to the login page
           window.location.href = redirectUrl;
+          toast.warn("Redirect");
         } else {
           console.error("Login failed:", error);
           window.location.href = "https://adventure-clicker.netlify.app/login";
+          toast.error("Login fehlgeschlagen.");
         }
       }
     };
@@ -94,6 +100,7 @@ const GameScreen = () => {
   return (
     <div>
       {userId ? <Game userId={userId} name={name} /> : <CircularLoadingBar />}
+      <ToastContainer />
     </div>
   );
 };
