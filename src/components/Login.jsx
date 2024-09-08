@@ -11,7 +11,7 @@ const Login = () => {
       const response = await axios.post(
         `https://adventure-clicker-backend.onrender.com/login`,
         { username: loginUsername, password: loginPassword },
-        { withCredentials: true }
+        { withCredentials: true, credentials: 'include' }
       );
 
       console.log("Login response:", response.data);
