@@ -23,8 +23,6 @@ const Login = () => {
       const token = response.data.token; // Adjust according to your actual response structure
       localStorage.setItem("jwtToken", token);
 
-
-      console.log("Login token:", response.data.token);
       navigate("/"); // Redirect to home page
     } catch (error) {
       console.error("Login failed:", error);

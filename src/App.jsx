@@ -32,7 +32,7 @@ const GameScreen = () => {
       // If the response is successful, the user is authenticated
       console.log("Authentication response:", response);
       setAuthUserId(response.data.user._id);
-      toast.success(`Angemeldet als ${response.data.user.username}`);
+      toast.success(`Angemeldet.`);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.warn("Nicht authentifiziert, Weiterleitung zur Login-Seite.");
