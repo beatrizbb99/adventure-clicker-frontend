@@ -20,8 +20,9 @@ const GameScreen = () => {
   const checkGame = async () => {
     try {
       const response = await axios.get(
-        `https://adventure-clicker-backend.onrender.com`
-      );
+        `https://adventure-clicker-backend.onrender.com`,
+        { withCredentials: true }
+      );      
 
       // If the response is successful, the user is authenticated
       console.log("Authentication response:", response);
