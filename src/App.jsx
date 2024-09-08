@@ -71,6 +71,7 @@ const GameScreen = () => {
           }
         );
 
+        console.log(response.data);
         setUserId(response.data.data.getUserByAuth.id);
         setName(response.data.data.getUserByAuth.name);
       } catch (error) {
