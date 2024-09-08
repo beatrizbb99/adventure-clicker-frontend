@@ -46,6 +46,11 @@ const ItemList = (props) => {
         }
       `,
       },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
+        },
         { withCredentials: true }
       );
 
@@ -65,7 +70,9 @@ const ItemList = (props) => {
                 }
               }
             `,
-        });
+
+        },
+        );
 
         //console.log(itemResponse.data.data.getItemById);
 
@@ -80,7 +87,6 @@ const ItemList = (props) => {
           itemStats: `${itemResult.boostedStat}:${itemResult.boost}`,
         };
       },
-        { withCredentials: true }
       );
 
       // Wait for all item details to resolve
@@ -104,6 +110,11 @@ const ItemList = (props) => {
             }
           `,
       },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
+        },
         { withCredentials: true }
       );
 

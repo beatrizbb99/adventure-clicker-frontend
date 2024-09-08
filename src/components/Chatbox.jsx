@@ -23,6 +23,11 @@ const Chatbox = ({ userId, name }) => {
           }
         `,
       },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+        }
+      },
         { withCredentials: true }
       );
 
@@ -48,6 +53,11 @@ const Chatbox = ({ userId, name }) => {
               }
             }
           `,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
         },
           { withCredentials: true }
         );

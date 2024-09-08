@@ -4,7 +4,12 @@ const Logout = () => {
     const handleLogout = async () => {
       try {
         const response = await axios.post(
-          `https://adventure-clicker-backend.onrender.com/logout`
+          `https://adventure-clicker-backend.onrender.com/logout`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+            }
+          },
         );
   
         console.log(response.data);

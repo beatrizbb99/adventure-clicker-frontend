@@ -1,37 +1,58 @@
 import { useState } from "react";
 import axios from "axios";
 import '../css/Login.css';
+import { useNavigate } from "react-router-dom";
+
+const API_URL = "https://adventure-clicker-backend.onrender.com";
 
 const Login = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLoginLocal = async () => {
     try {
       const response = await axios.post(
-        `https://adventure-clicker-backend.onrender.com/login`,
+        `${API_URL}/login`,
         { username: loginUsername, password: loginPassword },
-        { withCredentials: true, credentials: 'include' }
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
+        },
+        { withCredentials: true }
       );
 
+      // Assuming the token is returned in the response and you want to store it
+      const token = response.data.token; // Adjust according to your actual response structure
+      localStorage.setItem("jwtToken", token);
+
       console.log("Login response:", response.data);
-      window.location.href = "https://adventure-clicker.netlify.app/";
+      navigate("/"); // Redirect to home page
     } catch (error) {
       console.error("Login failed:", error);
+      alert("Login failed. Please check your credentials.");
     }
   };
 
   const handleRegisterLocal = async () => {
     try {
       const response = await axios.post(
-        `https://adventure-clicker-backend.onrender.com/register`,
+        `${API_URL}/register`,
         { username: loginUsername, password: loginPassword },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
+        },
         { withCredentials: true }
       );
 
       console.log("Registration response:", response.data);
+      alert("Registration successful. You can now log in.");
     } catch (error) {
       console.error("Registration failed:", error);
+      alert("Registration failed. Please try again.");
     }
   };
 
@@ -70,6 +91,5 @@ const Login = () => {
     </div>
   );
 };
-
 
 export default Login;

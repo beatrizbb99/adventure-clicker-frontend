@@ -30,12 +30,17 @@ const Adventure = (props) => {
     }, 1000);
   };
 
+  const getToken = () => {
+    return localStorage.getItem('token'); // Token aus dem localStorage holen
+  };
+
   const doEvent = async () => {
     try {
       const response = await fetch("https://adventure-clicker-backend.onrender.com/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${getToken()}`,
         },
         credentials: "include",
         body: JSON.stringify({
@@ -88,6 +93,7 @@ const Adventure = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${getToken()}`,
         },
         credentials: "include",
         body: JSON.stringify({

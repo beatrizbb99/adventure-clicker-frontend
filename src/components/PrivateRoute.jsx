@@ -12,6 +12,11 @@ const PrivateRoute = ({ element: Element, PORT }) => {
         const response = await axios.post(`https://adventure-clicker-backend.onrender.com/graphql`, {
           query: ``
         },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
+        },
           { withCredentials: true }
         );
         console.log(response.data);

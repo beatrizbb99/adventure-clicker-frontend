@@ -22,6 +22,10 @@ const EquipList = (props) => {
     getEquipItems();
   }, [userId]); // Re-run the effect whenever userId changes
 
+  const getToken = () => {
+    return localStorage.getItem('token'); // Token aus dem localStorage holen
+  };
+
   const getEquipItems = async () => {
     try {
       // Fetch the initial inventory items
@@ -37,6 +41,11 @@ const EquipList = (props) => {
                 }
           }
         `,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+        }
       },
         { withCredentials: true }
       );
@@ -63,6 +72,7 @@ const EquipList = (props) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${getToken()}`,
             },
             body: JSON.stringify({
               query: `
@@ -136,6 +146,7 @@ const EquipList = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${getToken()}`,
         },
         body: JSON.stringify({
           query: `
@@ -171,6 +182,7 @@ const EquipList = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${getToken()}`,
       },
       credentials: "include",
       body: JSON.stringify({

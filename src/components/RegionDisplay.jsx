@@ -5,6 +5,10 @@ const RegionDisplay = (props) => {
   const [region, setRegion] = useState(null);
   const [error, setError] = useState(null);
 
+  const getToken = () => {
+    return localStorage.getItem('token'); // Token aus dem localStorage holen
+  };
+
   useEffect(() => {
     const fetchRegion = async () => {
       try {
@@ -14,6 +18,7 @@ const RegionDisplay = (props) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${getToken()}`,
           },
           credentials: "include",
           body: JSON.stringify({

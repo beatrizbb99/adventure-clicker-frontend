@@ -59,8 +59,13 @@ const Chat = (props) => {
               }
             }
           `,
+        }, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          }
         },
-          { withCredentials: true }
+          { withCredentials: true },
+
         );
 
         setMessages(response.data.data.getAllChatsAfterTime);
@@ -94,7 +99,13 @@ const Chat = (props) => {
             }
           }
         `,
-      });
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+        }
+      },
+    );
 
       const result = response.data;
       console.log(result);

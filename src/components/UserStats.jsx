@@ -26,6 +26,11 @@ const UserStats = (props) => {
               }
             `,
         },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+            }
+          },
           { withCredentials: true }
         );
 
