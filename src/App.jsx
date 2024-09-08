@@ -42,7 +42,7 @@ const GameScreen = () => {
         toast.warn("Redirect 1");
       } else {
         console.error("Login failed:", error);
-        toast.error("Login fehlgeschlagen 1");
+        toast.error(`Login fehlgeschlagen ${error}`);
       }
     }
   };
