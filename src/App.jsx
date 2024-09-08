@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";  
 import "./App.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -38,11 +39,11 @@ const GameScreen = () => {
         console.log("Redirecting to:", redirectUrl);
         // Redirect to the login page
         window.location.href = redirectUrl;
-        toast.warn("Redirect");
+        toast.warn("Redirect 1");
       } else {
         console.error("Login failed:", error);
         window.location.href = "https://adventure-clicker.netlify.app/login";
-        toast.error("Login fehlgeschlagen");
+        toast.error("Login fehlgeschlagen 1");
       }
     }
   };
@@ -82,11 +83,11 @@ const GameScreen = () => {
           console.log("Redirecting to:", redirectUrl);
           // Redirect to the login page
           window.location.href = redirectUrl;
-          toast.warn("Redirect");
+          toast.warn("Redirect 2");
         } else {
           console.error("Login failed:", error);
           window.location.href = "https://adventure-clicker.netlify.app/login";
-          toast.error("Login fehlgeschlagen.");
+          toast.error("Login fehlgeschlagen 2");
         }
       }
     };
