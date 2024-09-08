@@ -30,6 +30,7 @@ const GameScreen = () => {
       toast.success(`Angemeldet als ${response.data.user.username}`);
     } catch (error) {
       // Check if it's a redirect
+      toast.info(error);
       if (
         error.response &&
         error.response.status === 302 &&
