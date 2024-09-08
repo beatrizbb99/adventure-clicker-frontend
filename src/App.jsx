@@ -38,12 +38,12 @@ const GameScreen = () => {
         const redirectUrl = error.response.headers.location;
         console.log("Redirecting to:", redirectUrl);
         // Redirect to the login page
-        window.location.href = redirectUrl;
         toast.warn("Redirect 1");
+        window.location.href = redirectUrl;
       } else {
         console.error("Login failed:", error);
-        window.location.href = "https://adventure-clicker.netlify.app/login";
         toast.error("Login fehlgeschlagen 1");
+        window.location.href = "https://adventure-clicker.netlify.app/login";
       }
     }
   };
@@ -82,12 +82,12 @@ const GameScreen = () => {
           const redirectUrl = error.response.headers.location;
           console.log("Redirecting to:", redirectUrl);
           // Redirect to the login page
-          window.location.href = redirectUrl;
           toast.warn("Redirect 2");
+          window.location.href = redirectUrl;
         } else {
           console.error("Login failed:", error);
-          window.location.href = "https://adventure-clicker.netlify.app/login";
           toast.error("Login fehlgeschlagen 2");
+          window.location.href = "https://adventure-clicker.netlify.app/login";
         }
       }
     };
