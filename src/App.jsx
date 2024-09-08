@@ -18,27 +18,16 @@ const GameScreen = () => {
 
   const checkGame = async () => {
     try {
-      const response = await axios.get(
-        `https://adventure-clicker-backend.onrender.com`
-      );
+      const response = await axios.get(`https://adventure-clicker-backend.onrender.com`);
 
-      // If the response status is 200, it means the user is authenticated
-      //console.log("Authentication response:", response);
+      // Erfolgreiche Authentifizierung
       setAuthUserId(response.data.user._id);
     } catch (error) {
-      // Check if it's a redirect
-      if (
-        error.response &&
-        error.response.status === 302 &&
-        error.response.headers.location
-      ) {
-        const redirectUrl = error.response.headers.location;
-        console.log("Redirecting to:", redirectUrl);
-        // Redirect to the login page
-        window.location.href = redirectUrl;
+      if (error.response && error.response.status === 401) {
+        console.log("Redirecting to login page");
+        window.location.href = "https://adventure-clicker.netlify.app/login";
       } else {
         console.error("Login failed:", error);
-        window.location.href = "https://adventure-clicker.netlify.app/login";
       }
     }
   };
@@ -50,40 +39,33 @@ const GameScreen = () => {
   useEffect(() => {
     const getUserId = async () => {
       try {
-        const response = await axios.post(`https://adventure-clicker-backend.onrender.com/graphql`, {
-          query: `
-                query {
-                    getUserByAuth(authUserId:"${authUserId}"){
-                        id
-                        name
-                    }
+        const response = await axios.post(
+          `https://adventure-clicker-backend.onrender.com/graphql`,
+          {
+            query: `
+              query {
+                getUserByAuth(authUserId: "${authUserId}") {
+                  id
+                  name
                 }
-              `,
-        },
+              }
+            `,
+          },
           { withCredentials: true }
         );
 
-        // If the response status is 200, it means the user is authenticated
-        //console.log("getUserId response:", response.data.data.getUserByAuth.id);
         setUserId(response.data.data.getUserByAuth.id);
         setName(response.data.data.getUserByAuth.name);
       } catch (error) {
-        // Check if it's a redirect
-        if (
-          error.response &&
-          error.response.status === 302 &&
-          error.response.headers.location
-        ) {
-          const redirectUrl = error.response.headers.location;
-          console.log("Redirecting to:", redirectUrl);
-          // Redirect to the login page
-          window.location.href = redirectUrl;
-        } else {
-          console.error("Login failed:", error);
+        if (error.response && error.response.status === 401) {
+          console.log("Redirecting to login page");
           window.location.href = "https://adventure-clicker.netlify.app/login";
+        } else {
+          console.error("Error retrieving user data:", error);
         }
       }
     };
+
 
     if (authUserId) {
       console.log("authUserId", authUserId);
