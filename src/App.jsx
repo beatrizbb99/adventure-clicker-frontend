@@ -19,8 +19,6 @@ const GameScreen = () => {
   const [userId, setUserId] = useState("");
   const [name, setName] = useState("");
 
-  const navigate = useNavigate();
-
   const checkGame = async () => {
     try {
       const response = await axios.get(
