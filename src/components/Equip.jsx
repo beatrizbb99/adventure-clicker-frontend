@@ -23,7 +23,7 @@ const EquipList = (props) => {
   }, [userId]); // Re-run the effect whenever userId changes
 
   const getToken = () => {
-    return localStorage.getItem('token'); // Token aus dem localStorage holen
+    return localStorage.getItem('jwtToken'); // Token aus dem localStorage holen
   };
 
   const getEquipItems = async () => {
