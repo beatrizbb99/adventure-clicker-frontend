@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import '../css/Login.css';
 import { useNavigate } from "react-router-dom";
@@ -15,17 +17,14 @@ const Login = () => {
       const response = await axios.post(
         `${API_URL}/login`,
         { username: loginUsername, password: loginPassword },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
-          }
-        },
         { withCredentials: true }
       );
 
       // Assuming the token is returned in the response and you want to store it
+      toast.info(response.data);
       const token = response.data.token; // Adjust according to your actual response structure
       localStorage.setItem("jwtToken", token);
+
 
       console.log("Login response:", response.data);
       navigate("/"); // Redirect to home page
