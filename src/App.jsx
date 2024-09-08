@@ -100,8 +100,8 @@ const GameScreen = () => {
 
   return (
     <div>
-      {userId ? <Game userId={userId} name={name} /> : <CircularLoadingBar />}
       <ToastContainer />
+      {userId ? <Game userId={userId} name={name} /> : <CircularLoadingBar />}
     </div>
   );
 };
