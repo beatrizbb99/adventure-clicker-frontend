@@ -27,7 +27,7 @@ const GameScreen = () => {
       // If the response status is 200, it means the user is authenticated
       //console.log("Authentication response:", response);
       setAuthUserId(response.data.user._id);
-      toast.success("Angemeldet als ", response.data.user.username);
+      toast.success(`Angemeldet als ${response.data.user.username}`);
     } catch (error) {
       // Check if it's a redirect
       if (
