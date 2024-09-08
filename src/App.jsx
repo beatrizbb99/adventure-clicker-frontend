@@ -39,7 +39,8 @@ const GameScreen = () => {
         error.response.status === 302 &&
         error.response.headers.location
       ) {
-        navigate("/login");
+        
+        window.location.href = "https://adventure-clicker.netlify.app/login";
         toast.warn("Bitte melde dich an.");
       } else {
         console.error("Login failed:", error);
@@ -79,7 +80,8 @@ const GameScreen = () => {
           error.response.status === 302 &&
           error.response.headers.location
         ) {
-          navigate("/login");
+          
+          window.location.href = "https://adventure-clicker.netlify.app/login";
           toast.warn("Bitte melde dich an.");
         } else {
           console.error("Login failed:", error);
