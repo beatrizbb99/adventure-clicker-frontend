@@ -16,10 +16,10 @@ const GameScreen = () => {
   const [authUserId, setAuthUserId] = useState("");
   const [userId, setUserId] = useState("");
   const [name, setName] = useState("");
-
+  const navigate = useNavigate();
+  
   const checkGame = async () => {
-    const navigate = useNavigate();
-    
+
     try {
       const response = await axios.get(`https://adventure-clicker-backend.onrender.com`);
 
