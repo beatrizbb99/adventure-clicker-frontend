@@ -40,7 +40,6 @@ const GameScreen = () => {
         navigate("/login");
       } else {
         console.error("Login failed:", error);
-        toast.error(`Login fehlgeschlagen ${error.message}`);
       }
     }
   };
@@ -70,7 +69,6 @@ const GameScreen = () => {
             },
           }
         );
-        console.log("User Id: ", response.data);
         setUserId(response.data.data.getUserByAuth.id);
         setName(response.data.data.getUserByAuth.name);
       } catch (error) {
@@ -79,7 +77,6 @@ const GameScreen = () => {
           navigate("/login");
         } else {
           console.error("Login failed:", error);
-          toast.error("Login fehlgeschlagen 2");
         }
       }
     };
