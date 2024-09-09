@@ -1,30 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import '../css/Logout.css';
+import socket from "./socket";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        `https://adventure-clicker-backend.onrender.com/logout`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
-          }
-        }
-      );
+      localStorage.removeItem("jwtToken");
 
-      console.log(response.data);
-      localStorage.removeItem("jwtToken"); // Entferne den Token aus localStorage
+      if (socket) {
+        socket.disconnect();
+      }
+
+      toast.success("Abgemeldet.");
 
       // Weiterleitung zur Login-Seite
       navigate("/login");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
   };
 
   const handleGoBack = () => {
