@@ -121,7 +121,6 @@ const EquipList = (props) => {
     var geschick;
     var intelligenz;
     var staerke;
-    console.log(boostedStat, boost);
     items.forEach((element) => {
       var boostedStat = element.boostedStat;
       var boost = element.boost;
@@ -136,7 +135,7 @@ const EquipList = (props) => {
       }
     });
 
-    //console.log(`update: ${intelligenz}, ${staerke}, ${geschick}`);
+    console.log(`update: ${intelligenz}, ${staerke}, ${geschick}`);
 
     try {
       const response = await fetch("https://adventure-clicker-backend.onrender.com/graphql", {
