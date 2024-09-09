@@ -4,17 +4,18 @@ import PropTypes from "prop-types";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const Chat = (props) => {
+const Chat = ({ userId, name, guildId }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const userId = props.userId;
-  const name = props.name;
-  const guildId = props.guildId;
   const socketRef = useRef(null);
 
   useEffect(() => {
     socketRef.current = io.connect("https://adventure-clicker-backend.onrender.com", {
+      extraHeaders: {
+        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Token hinzufügen
+      },
       withCredentials: true,
+      transports: ["websocket", "polling"], // Optional: Fallback auf "polling"
     });
 
     return () => {
@@ -45,7 +46,6 @@ const Chat = (props) => {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        // Calculate the timestamp for 3 days ago
         const threeDaysAgo = new Date();
         threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
 
@@ -61,12 +61,9 @@ const Chat = (props) => {
           `,
         }, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
           }
-        },
-          { withCredentials: true },
-
-        );
+        });
 
         setMessages(response.data.data.getAllChatsAfterTime);
       } catch (error) {
@@ -75,42 +72,48 @@ const Chat = (props) => {
     };
 
     fetchChats();
-  }, []);
+  }, [guildId]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (newMessage.trim() !== "") {
-      fetchChatToDB();
-      socketRef.current.emit("chatMessage", {
-        userGuild: guildId,
-        username: name,
-        message: newMessage,
-      });
+      // Direkt die Nachricht lokal anzeigen
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { username: name, text: newMessage },
+      ]);
+
+      try {
+        await fetchChatToDB();
+        socketRef.current.emit("chatMessage", {
+          userGuild: guildId,
+          username: name,
+          message: newMessage,
+        });
+      } catch (error) {
+        console.error("Error sending chat message:", error);
+      }
+
       setNewMessage("");
     }
   };
 
   const fetchChatToDB = async () => {
     try {
-      const response = await axios.post("https://adventure-clicker-backend.onrender.com/graphql", {
+      await axios.post("https://adventure-clicker-backend.onrender.com/graphql", {
         query: `
           mutation {
-            createChat(text: "${newMessage}", userId: "${userId}", username:"${name}",gildenId: "${guildId}") {
+            createChat(text: "${newMessage}", userId: "${userId}", username:"${name}", gildenId: "${guildId}") {
               userId
             }
           }
         `,
-      },
-      {
+      }, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         }
-      },
-    );
-
-      const result = response.data;
-      console.log(result);
+      });
     } catch (error) {
-      console.error("The Chat errors");
+      console.error("Error storing chat message:", error);
     }
   };
 

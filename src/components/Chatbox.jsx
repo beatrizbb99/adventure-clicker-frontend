@@ -7,6 +7,7 @@ const Chatbox = ({ userId, name }) => {
   const [activeChat, setActiveChat] = useState('global');
   const [userGuild, setUserGuild] = useState(null);
   const [guildName, setGuildName] = useState(null);
+  const [loadingGuild, setLoadingGuild] = useState(true); // Loading state added
 
   const toggleChat = (chatId) => {
     setActiveChat(chatId);
@@ -25,7 +26,7 @@ const Chatbox = ({ userId, name }) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         }
       },
         { withCredentials: true }
@@ -56,7 +57,7 @@ const Chatbox = ({ userId, name }) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
           }
         },
           { withCredentials: true }
@@ -66,7 +67,11 @@ const Chatbox = ({ userId, name }) => {
         setGuildName(result.data.getGildeById.name);
       } catch (error) {
         console.error('Error fetching guild name:', error);
+      } finally {
+        setLoadingGuild(false); // Stop loading once the request is done
       }
+    } else {
+      setLoadingGuild(false); // Stop loading if no guild is found
     }
   };
 
@@ -78,18 +83,19 @@ const Chatbox = ({ userId, name }) => {
     <div className={'whole-chat'}>
       <div>
         <div className='chat-buttons'>
-          <a
+          <button
             onClick={() => toggleChat('global')}
             className={activeChat === 'global' ? 'active-link chat-tab-button' : 'chat-tab-button'}
           >
             Global Chat
-          </a>
-          <a
+          </button>
+          <button
             onClick={() => toggleChat('guild')}
             className={activeChat === 'guild' ? 'active-link chat-tab-button' : 'chat-tab-button'}
+            disabled={loadingGuild || !guildName} // Disable button while loading or if no guild is found
           >
-            {guildName}
-          </a>
+            {loadingGuild ? 'Loading...' : guildName || 'No Guild'}
+          </button>
         </div>
 
         <div className={`chat ${activeChat === 'global' ? 'chat-shown' : 'chat-hidden'}`}>
