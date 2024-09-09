@@ -125,6 +125,7 @@ const EquipList = (props) => {
     items.forEach((element) => {
       var boostedStat = element.boostedStat;
       var boost = element.boost;
+      console.log(boostedStat, boost);
       if (boostedStat == "staerke") {
         staerke += boost;
       }
