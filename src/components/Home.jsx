@@ -5,8 +5,13 @@ import axios from 'axios';
 
 const Home = (PORT) => {
   const [message, setMessage] = useState('');
-  const socket = io(`https://adventure-clicker-backend.onrender.com`);
-
+  const socket = io("https://adventure-clicker-backend.onrender.com", {
+    extraHeaders: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Hier wird der Token hinzugefügt
+    },
+    transports: ["websocket", "polling"], // Optional: Fallback auf "polling"
+  });
+  
   useEffect(() => {
     const guildId = 'exampleGuildId';
     socket.emit('joinGuildChat', guildId);
