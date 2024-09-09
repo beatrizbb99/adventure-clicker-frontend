@@ -62,7 +62,7 @@ const RegionDisplay = (props) => {
       {region && (
         <div>
           <img
-            src={`/src/assets/images/${region.hintergrundBild}.png`}
+            src={`/assets/images/${region.hintergrundBild}.png`}
             alt={`Background for Region ${region.id}`}
             className="region-image"
           />
