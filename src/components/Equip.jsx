@@ -217,7 +217,7 @@ const EquipList = (props) => {
       case "Blumenstab":
         return `wand.png`;
       case "Blitzmantel":
-        return 'blitzmantel.png'
+        return 'blitzmantel.png';
       default:
         return `unnown.png`;
     }
