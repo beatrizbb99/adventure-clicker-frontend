@@ -72,6 +72,11 @@ const ItemList = (props) => {
             `,
 
         },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Add the token in the header
+            }
+          },
         );
 
         //console.log(itemResponse.data.data.getItemById);
