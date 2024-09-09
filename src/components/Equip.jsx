@@ -240,7 +240,7 @@ const EquipList = (props) => {
                 </div>
                 <div className="rpg-item-icons">
                   <img
-                    src={getItemIcon(beschreibung)}
+                    src={new URL(getItemIcon(beschreibung), import.meta.url).href}
                     alt={beschreibung}
                     className="rpg-item-icon"
                   />

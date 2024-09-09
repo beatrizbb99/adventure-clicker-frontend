@@ -216,7 +216,7 @@ const Adventure = (props) => {
             id="adventure-display"
           >
             <img
-              src={getEventFigure(event.titel)}
+              src={new URL(getEventFigure(event.titel), import.meta.url).href}
               alt={event.titel}
               className="event-figur"
             />

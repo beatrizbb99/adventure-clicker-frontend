@@ -70,7 +70,7 @@ const UserStats = (props) => {
               <strong>Dexterity:</strong> {stats.geschick}
             </li>
             <li className='stats-item'>
-              <img src="/src/assets/images/icons/heart.png" width="32" height="32" alt="Heart Icon"></img> {stats.energie}
+              <img src= {new URL("/src/assets/images/icons/heart.png", import.meta.url).href} width="32" height="32" alt="Heart Icon"></img> {stats.energie}
             </li>
           </ul>
         </div>

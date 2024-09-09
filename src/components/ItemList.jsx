@@ -189,7 +189,7 @@ const ItemList = (props) => {
                 <p className="item-quantity">{quantity + "x"}</p>
               </div>
               <img
-                src={getItemIcon(beschreibung)}
+                src={new URL(getItemIcon(beschreibung), import.meta.url).href}
                 alt={beschreibung}
                 className="item-icon"
               />
