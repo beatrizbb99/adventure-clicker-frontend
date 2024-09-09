@@ -170,6 +170,8 @@ const ItemList = (props) => {
         return `handschuhe.png`;
       case "Blumenstab":
         return `wand.png`;
+      case "Blitzmantel":
+        return 'blitzmantel.png';
       default:
         return `unnown.png`;
     }
