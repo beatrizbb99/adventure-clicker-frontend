@@ -11,7 +11,11 @@ const Chat = ({ userId, name, guildId }) => {
 
   useEffect(() => {
     socketRef.current = io.connect("https://adventure-clicker-backend.onrender.com", {
+      extraHeaders: {
+        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, // Token hinzufügen
+      },
       withCredentials: true,
+      transports: ["websocket", "polling"], // Optional: Fallback auf "polling"
     });
 
     return () => {
