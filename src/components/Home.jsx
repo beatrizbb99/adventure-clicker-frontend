@@ -11,6 +11,13 @@ const Home = (PORT) => {
     },
     transports: ["websocket", "polling"], // Optional: Fallback auf "polling"
   });
+
+  socket.on("connect_error", () => {
+    console.log("Fehler bei der Verbindung, versuche erneut zu verbinden...");
+    socket.io.opts.transports = ["polling", "websocket"];
+    socket.connect();
+  });
+  
   
   useEffect(() => {
     const guildId = 'exampleGuildId';
