@@ -127,7 +127,7 @@ const EquipList = (props) => {
       if (boostedStat == "staerke") {
         staerke =  10 + boost;
       }
-      if (boostedStat == "geschick") {
+      if (boostedStat == "geschicklichkeit") {
         geschick = 10 + boost;
       }
       if (boostedStat == "intelligenz") {
