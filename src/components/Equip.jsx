@@ -118,22 +118,21 @@ const EquipList = (props) => {
   };
 
   const updateUserStats = async (userId, items) => {
-    var geschick = 10;
-    var intelligenz = 10;
-    var staerke = 10;
-
+    var geschick;
+    var intelligenz;
+    var staerke;
+    console.log(boostedStat, boost);
     items.forEach((element) => {
       var boostedStat = element.boostedStat;
       var boost = element.boost;
-      console.log(boostedStat, boost);
       if (boostedStat == "staerke") {
-        staerke += boost;
+        staerke =  10 + boost;
       }
       if (boostedStat == "geschick") {
-        geschick += boost;
+        geschick = 10 + boost;
       }
       if (boostedStat == "intelligenz") {
-        intelligenz += boost;
+        intelligenz = 10 + boost;
       }
     });
 
