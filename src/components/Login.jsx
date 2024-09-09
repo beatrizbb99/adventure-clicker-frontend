@@ -53,6 +53,7 @@ const Login = () => {
 
   return (
     <div className="login-bg">
+      <ToastContainer/>
       <div className="login-container">
         <div className="img-container">
           <div className="game-title">Adventure Clicker</div>
