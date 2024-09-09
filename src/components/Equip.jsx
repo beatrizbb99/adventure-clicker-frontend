@@ -198,26 +198,26 @@ const EquipList = (props) => {
 
   const getItemIcon = (beschreibung) => {
     // console.log(items)
-    const path = "/src/assets/images/";
+    const path = "/assets/images/";
     switch (beschreibung) {
       case "Schwert":
-        return `${path}/icons/swordWood.png`;
+        return `${path}/swordWood.png`;
       case "Schwert und Schild":
-        return `${path}/icons/SchwertSchild.png`;
+        return `${path}/SchwertSchild.png`;
       case "Goldmünze":
-        return `${path}/icons/coin.png`;
+        return `${path}/coin.png`;
       case "Knüppel mit Rattenpelz":
-        return `${path}/icons/upg_spear.png`;
+        return `${path}/upg_spear.png`;
       case "Dunkles Großschwert":
-        return `${path}/icons/sword.png`;
+        return `${path}/sword.png`;
       case "Schicke Stiefel":
-        return `${path}/icons/Boots.png`;
+        return `${path}/Boots.png`;
       case "Flinke Fingerlose Handschuhe":
-        return `${path}/icons/handschuhe.png`;
+        return `${path}/handschuhe.png`;
       case "Blumenstab":
-        return `${path}/icons/wand.png`;
+        return `${path}/wand.png`;
       default:
-        return `${path}/icons/unnown.png`;
+        return `${path}/unnown.png`;
     }
   };
 
@@ -240,7 +240,7 @@ const EquipList = (props) => {
                 </div>
                 <div className="rpg-item-icons">
                   <img
-                    src={new URL(getItemIcon(beschreibung), import.meta.url).href}
+                    src={getItemIcon(beschreibung)}
                     alt={beschreibung}
                     className="rpg-item-icon"
                   />

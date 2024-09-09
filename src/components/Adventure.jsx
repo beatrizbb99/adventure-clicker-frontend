@@ -132,28 +132,28 @@ const Adventure = (props) => {
   };
 
   const getEventFigure = (event) => {
-    const path = "/src/assets/images/";
+    const path = "/assets/images/";
     switch (event) {
       case "Rattacke":
-        return `${path}/figures/rattacke.png`;
+        return `${path}/rattacke.png`;
       case "Bananadit":
-        return `${path}/figures/bananabandit.png`;
+        return `${path}/bananabandit.png`;
       case "":
-        return `${path}/figures/troll.png`;
+        return `${path}/troll.png`;
       case "Rattacke return":
-        return `${path}/figures/rattacke2.png`;
+        return `${path}/rattacke2.png`;
       case "Klebriger Herbert benutzt sein Schwert!":
-        return `${path}/figures/klebrigerherbert.png`;
+        return `${path}/klebrigerherbert.png`;
       case "G steht für Gun":
         return `${path}/figures/gundalf.png`;
       case "Rattatacke: The Reckoning":
-        return `${path}/figures/rattacke3.png`;
+        return `${path}/rattacke3.png`;
       case "3-Finger Joe":
-        return `${path}/figures/threejoe.png`;
+        return `${path}/threejoe.png`;
       case "Ein blühendes Wunder erleben":
-        return `${path}/figures/flowermagician.png`;
+        return `${path}/flowermagician.png`;
       default:
-        return `${path}/figures/undefinded.png`;
+        return `${path}/undefinded.png`;
     }
   };
 
@@ -216,7 +216,7 @@ const Adventure = (props) => {
             id="adventure-display"
           >
             <img
-              src={new URL(getEventFigure(event.titel), import.meta.url).href}
+              src={getEventFigure(event.titel)}
               alt={event.titel}
               className="event-figur"
             />
