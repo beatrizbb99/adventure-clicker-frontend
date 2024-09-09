@@ -14,8 +14,6 @@ const Logout = () => {
         socket.disconnect();
       }
 
-      toast.success("Abgemeldet.");
-
       // Weiterleitung zur Login-Seite
       navigate("/login");
   };

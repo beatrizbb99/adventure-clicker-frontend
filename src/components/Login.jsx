@@ -26,7 +26,7 @@ const Login = () => {
       navigate("/"); // Redirect to home page
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Login failed. Please check your credentials.");
+      toast.error("Login fehlgeschlagen. Bitte prüfe deine Angaben.");
     }
   };
 
@@ -44,10 +44,10 @@ const Login = () => {
       );
 
       console.log("Registration response:", response.data);
-      alert("Registration successful. You can now log in.");
+      toast.success("Registrierung erfolgreich. Du kannst dich jetzt anmelden.");
     } catch (error) {
       console.error("Registration failed:", error);
-      alert("Registration failed. Please try again.");
+      toast.error("Registrierung fehgeschlagen. Bitte versuche es erneut.");
     }
   };
 
