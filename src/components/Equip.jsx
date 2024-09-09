@@ -200,7 +200,7 @@ const EquipList = (props) => {
     // console.log(items)
     const path = "/assets/images/";
     switch (beschreibung) {
-      case "Schwert":
+      case "Claymore":
         return `swordWood.png`;
       case "Schwert und Schild":
         return `SchwertSchild.png`;
@@ -216,6 +216,8 @@ const EquipList = (props) => {
         return `handschuhe.png`;
       case "Blumenstab":
         return `wand.png`;
+      case "Blitzmantel":
+        return 'blitzmantel.png'
       default:
         return `unnown.png`;
     }

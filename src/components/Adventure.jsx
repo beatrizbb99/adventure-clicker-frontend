@@ -144,7 +144,7 @@ const Adventure = (props) => {
       case "Klebriger Herbert benutzt sein Schwert!":
         return `klebrigerherbert.png`;
       case "G steht für Gun":
-        return `figures/gundalf.png`;
+        return `gundalf.png`;
       case "Rattatacke: The Reckoning":
         return `rattacke3.png`;
       case "3-Finger Joe":
