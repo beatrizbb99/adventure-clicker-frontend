@@ -62,7 +62,7 @@ const RegionDisplay = (props) => {
       {region && (
         <div>
           <img
-            src={`/assets/images/${region.hintergrundBild}.png`}
+            src={new URL(`/src/assets/images/${region.hintergrundBild}.png`, import.meta.url).href}
             alt={`Background for Region ${region.id}`}
             className="region-image"
           />
