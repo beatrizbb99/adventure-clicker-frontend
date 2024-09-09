@@ -132,28 +132,27 @@ const Adventure = (props) => {
   };
 
   const getEventFigure = (event) => {
-    const path = "/assets/images/";
     switch (event) {
       case "Rattacke":
-        return `${path}/rattacke.png`;
+        return `rattacke.png`;
       case "Bananadit":
-        return `${path}/bananabandit.png`;
+        return `bananabandit.png`;
       case "":
-        return `${path}/troll.png`;
+        return `troll.png`;
       case "Rattacke return":
-        return `${path}/rattacke2.png`;
+        return `rattacke2.png`;
       case "Klebriger Herbert benutzt sein Schwert!":
-        return `${path}/klebrigerherbert.png`;
+        return `klebrigerherbert.png`;
       case "G steht für Gun":
-        return `${path}/figures/gundalf.png`;
+        return `figures/gundalf.png`;
       case "Rattatacke: The Reckoning":
-        return `${path}/rattacke3.png`;
+        return `rattacke3.png`;
       case "3-Finger Joe":
-        return `${path}/threejoe.png`;
+        return `threejoe.png`;
       case "Ein blühendes Wunder erleben":
-        return `${path}/flowermagician.png`;
+        return `flowermagician.png`;
       default:
-        return `${path}/undefinded.png`;
+        return `undefinded.png`;
     }
   };
 

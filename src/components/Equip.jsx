@@ -201,23 +201,23 @@ const EquipList = (props) => {
     const path = "/assets/images/";
     switch (beschreibung) {
       case "Schwert":
-        return `${path}/swordWood.png`;
+        return `swordWood.png`;
       case "Schwert und Schild":
-        return `${path}/SchwertSchild.png`;
+        return `SchwertSchild.png`;
       case "Goldmünze":
-        return `${path}/coin.png`;
+        return `coin.png`;
       case "Knüppel mit Rattenpelz":
-        return `${path}/upg_spear.png`;
+        return `upg_spear.png`;
       case "Dunkles Großschwert":
-        return `${path}/sword.png`;
+        return `sword.png`;
       case "Schicke Stiefel":
-        return `${path}/Boots.png`;
+        return `Boots.png`;
       case "Flinke Fingerlose Handschuhe":
-        return `${path}/handschuhe.png`;
+        return `handschuhe.png`;
       case "Blumenstab":
-        return `${path}/wand.png`;
+        return `wand.png`;
       default:
-        return `${path}/unnown.png`;
+        return `unnown.png`;
     }
   };
 
